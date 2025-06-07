@@ -15,7 +15,9 @@ export function PlayerProvider({ children }) {
     const script = document.createElement('script');
     script.src = 'https://sdk.scdn.co/spotify-player.js';
     script.async = true;
-    document.body.appendChild(script);
+    const originalOnReady = window.onSpotifyWebPlaybackSDKReady;
+    ;
+
 
     window.onSpotifyWebPlaybackSDKReady = () => {
       const newPlayer = new window.Spotify.Player({
@@ -46,10 +48,16 @@ export function PlayerProvider({ children }) {
       };
     };
 
+    document.body.appendChild(script)
+
     return () => {
       document.body.removeChild(script);
+      window.onSpotifyWebPlaybackSDKReady = originalOnReady;
+      if (playerRef.current) {
+        playerRef.current.disconnect();
+      }
     };
-  })
+  }, [volume])
 
   useEffect(() => {
     if (player) {
