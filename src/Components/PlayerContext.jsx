@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react"
-import { spotifyPlayerContext } from './SpotifyPlayerContext'
+import { spotifyPlayerContext } from './spotifyPlayerContext/'
 
-export function PlayerContext({ children }) {
+
+export function PlayerProvider({ children }) {
   const [player, setPlayer] = useState()
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTrack, setCurrentTrack] = useState(null);
@@ -89,7 +90,7 @@ export function PlayerContext({ children }) {
       seek
 
     }}>
-      {{ children }}
+      {children}
     </spotifyPlayerContext.Provider>
   )
 }

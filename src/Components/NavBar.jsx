@@ -13,6 +13,15 @@ export default function NavBar() {
     })
     const handleSignOut = () => setAuthtoken('')
 
+    const handleSpotifyLogin = () => {
+        const clientId = '904f179eb8d348fb9946f67e2bbf2736'; // Get from Spotify Dashboard
+        const redirectUri = encodeURIComponent('http://localhost:3000/callback');
+        const scopes = encodeURIComponent('streaming user-read-email user-read-private');
+
+        window.location = `https://accounts.spotify.com/authorize?response_type=token&client_id=${clientId}&scope=${scopes}&redirect_uri=${redirectUri}`;
+    };
+
+
 
     return (
 
@@ -46,6 +55,18 @@ export default function NavBar() {
                     </Button>
                 </Form>
 
+                <Button
+                    variant="success"
+                    className="ms-3 py-3 px-4"
+                    style={{
+                        fontSize: '1.1rem',
+                        borderRadius: '30px',
+                        fontWeight: '500'
+                    }}
+                    onClick={handleSpotifyLogin}
+                >
+                    Connect Spotify
+                </Button>
 
                 <Button
                     variant="primary"

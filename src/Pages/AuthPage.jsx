@@ -14,7 +14,7 @@ export default function AuthPage() {
     const handleClose = () => setShow(false)
 
     const [authToken, setAuthtoken] = useLocalStorage('authToken', ' ')
-    const url = 'https://905a6b86-1fdd-4d12-8263-1084f3ab6f14-00-17bt5dqlaktwa.sisko.replit.dev'
+    const url = 'https://p-blog.replit.app'
 
     const navigate = useNavigate()
     useEffect(() => {
