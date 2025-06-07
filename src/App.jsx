@@ -3,6 +3,7 @@ import './App.css'
 import AuthPage from './Pages/AuthPage'
 import ProfilePage from './Pages/ProfilePage'
 import { PlayerProvider } from './Components/PlayerContext'
+import Callback from './Pages/CallBack'
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
 
 
             <Route element={<AuthPage />} path='*' />
+            <Route element={<Callback />} path='/callback' />
             <Route element={<AuthPage />} path='/login' />
             <Route element={<ProfilePage />} path='/profile' />
 
